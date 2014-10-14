@@ -1,0 +1,9 @@
+#tosmics.transitions-enabled
+- @tosmics.each do |tosmic|
+  .box.panel.panel-default
+    = link_to (image_tag tosmic.image.url(:medium)), tosmic
+    .panel-body
+      %h2= link_to tosmic.title, tosmic
+      %p.user
+      Submitted by
+      = tosmic.user.email

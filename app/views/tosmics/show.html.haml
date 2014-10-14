@@ -1,0 +1,22 @@
+#tosmic_show.row
+  .col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading.tosmic_image
+        = image_tag @tosmic.image.url(:medium)
+      .panel-body
+        %h1= @tosmic.title
+        %p
+        Submitted by
+        = @tosmic.user.email
+      .panel-footer
+        .row
+          .col-md-6
+          .col-md-6
+            .btn-group.pull-right
+              = link_to like_tosmic_path(@tosmic), method: :put, class: "btn btn-default" do
+                %span.glyphicon.glyphicon-heart
+                  = @tosmic.get_upvotes.size
+              - if user_signed_in?
+                = link_to "Edit", edit_tosmic_path, class: "btn btn-default"
+                = link_to "Delete", tosmic_path, method: :delete, data: { confirm: "Anda Yakin Ingin Menghapus?"}, class: "btn btn-default"
+

@@ -1,0 +1,50 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class = "row">
+    <div class = "panel panel-default">
+      <div class ="panel-heading">
+        <h2>Edit Akun</h2>
+      </div>
+      
+      <div class="panel-body">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-group">
+          <%= f.input :email, required: true, autofocus: true, input_html: {class: 'form-control'} %>
+        </div>
+
+        <div class="form-group">                     
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :password, autocomplete: "off", hint: "biarkan kosong bila tidak ingin merubah", required: false, input_html: {class: 'form-control'} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :password_confirmation, required: false, input_html: {class: 'form-control'} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :current_password, hint: "masukkan password lama anda untuk konfirmasi perubahan", required: true, input_html: {class: 'form-control'} %>
+        </div>  
+
+        <div class="form-actions">
+          <%= f.button :submit, "Update", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      </div>
+
+      <div class="panel-footer">
+        <h3>Hapus Akun</h3>
+
+        <p><%= link_to "Hapus", registration_path(resource_name), data: { confirm: "Anda Yakin?" }, method: :delete %></p>
+
+        <%= link_to "Kembali", :back %>
+
+      </div>
+    </div>
+  </div>
+</div>  
